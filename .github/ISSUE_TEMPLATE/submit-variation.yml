@@ -1,0 +1,40 @@
+name: 🌄 Submit Variation
+about: For submitting a variation/port to the Coding Train Logo
+title: ''
+labels: submission
+assignees: ''
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for submitting your variation!
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Title of your variation
+      placeholder: Coding Train Logo
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Description of your variation. If porting to a different language, mention it here.
+    validations:
+      required: false
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Link to the demo / source code
+      placeholder: https://editor.p5js.org/codingtrain/sketches/p599bQ3sa
+    validations:
+      required: true
+  - type: textarea
+    id: image
+    attributes:
+      label: Image
+      description: Screenshot / GIF / Video
+      placeholder: Paste/upload an image of your variation.
+    validations:
+      required: true
