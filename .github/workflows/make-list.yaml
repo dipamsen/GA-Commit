@@ -25,4 +25,4 @@ jobs:
           git checkout ${{ github.head_ref }}
           git add README.md
           git commit -m "Update README"
-          git push
+          git push --set-upstream origin ${{ github.head_ref }}
