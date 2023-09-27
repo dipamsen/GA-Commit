@@ -17,11 +17,11 @@ jobs:
         run: |
           node scripts/create-list.js > README.md
 
-      - name: Configure Git
-        run: |
-          git config --global user.email "someone@gmail.com"
-          git config --global user.name "TestBot"
-          git config --global credential.helper store
+      # - name: Configure Git
+      #   run: |
+      #     git config --global user.email "someone@gmail.com"
+      #     git config --global user.name "TestBot"
+      #     git config --global credential.helper store
 
       - name: Fetch and Checkout Pull Request Branch
         run: |
