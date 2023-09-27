@@ -15,14 +15,25 @@ jobs:
 
       - name: Run create-list.js
         run: |
-          node scripts/create-list.js > README.md
+          node create-list.js > README.md
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "someone@gmail.com"
+          git config --global user.name "TestBot"
+          git config --global credential.helper store
+
+      - name: Authenticate with Personal Access Token
+        run: |
+          git remote set-url origin https://username:${{ secrets.PAT_TOKEN }}@github.com/dipamsen/GA-Commit.git
+
+      - name: Fetch and Checkout Pull Request Branch
+        run: |
+          git fetch origin ${{ github.head_ref }}:${{ github.head_ref }}
+          git checkout ${{ github.head_ref }}
 
       - name: Commit New README
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git fetch origin ${{ github.head_ref }}:${{ github.head_ref }}
-          git checkout ${{ github.head_ref }}
           git add README.md
           git commit -m "Update README"
           git push --set-upstream origin ${{ github.head_ref }}
