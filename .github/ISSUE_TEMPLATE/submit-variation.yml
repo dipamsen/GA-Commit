@@ -1,5 +1,5 @@
 name: 🌄 Submit Variation
-about: For submitting a variation/port to the Coding Train Logo
+description: For submitting a variation/port to the Coding Train Logo
 labels: submission
 body:
   - type: markdown
