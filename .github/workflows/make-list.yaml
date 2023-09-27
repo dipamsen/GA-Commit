@@ -1,0 +1,27 @@
+name: Update README
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Run create-list.js
+        run: |
+          node scripts/create-list.js > README.md
+
+      - name: Commit New README
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git checkout ${{ github.head_ref }}
+          git add README.md
+          git commit -m "Update README"
+          git push
