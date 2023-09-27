@@ -1,6 +1,7 @@
 name: 🌄 Submit Variation
 description: For submitting a variation/port to the Coding Train Logo
 labels: submission
+title: Variation Showcase
 body:
   - type: markdown
     attributes:
