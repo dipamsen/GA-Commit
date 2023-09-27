@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run create-list.js
         run: |
@@ -23,13 +23,9 @@ jobs:
           git config --global user.name "TestBot"
           git config --global credential.helper store
 
-      - name: Authenticate with Personal Access Token
-        run: |
-          git remote set-url origin https://username:${{ secrets.PAT_TOKEN }}@github.com/dipamsen/GA-Commit.git
-
       - name: Fetch and Checkout Pull Request Branch
         run: |
-          git fetch origin ${{ github.head_ref }}:${{ github.head_ref }}
+          git fetch origin ${{ github.head_ref }}
           git checkout ${{ github.head_ref }}
 
       - name: Commit New README
