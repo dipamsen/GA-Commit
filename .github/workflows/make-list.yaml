@@ -15,7 +15,7 @@ jobs:
 
       - name: Run create-list.js
         run: |
-          node create-list.js > README.md
+          node scripts/create-list.js > README.md
 
       - name: Configure Git
         run: |
