@@ -24,4 +24,6 @@ ${list}
 
 <!-- END-AUTO-LIST -->`;
 
+console.log("Updated README.md");
 console.log(newReadme);
+fs.writeFileSync(path.join(__dirname, "..", "README.md"), newReadme);

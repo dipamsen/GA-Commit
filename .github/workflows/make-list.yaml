@@ -12,10 +12,13 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run create-list.js
         run: |
-          node scripts/create-list.js > README.md
+          node scripts/create-list.js
 
       # - name: Configure Git
       #   run: |
@@ -23,13 +26,16 @@ jobs:
       #     git config --global user.name "TestBot"
       #     git config --global credential.helper store
 
-      - name: Fetch and Checkout Pull Request Branch
-        run: |
-          git fetch origin ${{ github.head_ref }}
-          git checkout ${{ github.head_ref }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update README
+      # - name: Fetch and Checkout Pull Request Branch
+      #   run: |
+      #     git fetch origin ${{ github.head_ref }}
+      #     git checkout ${{ github.head_ref }}
 
-      - name: Commit New README
-        run: |
-          git add README.md
-          git commit -m "Update README"
-          git push --set-upstream origin ${{ github.head_ref }}
+      # - name: Commit New README
+      #   run: |
+      #     git add README.md
+      #     git commit -m "Update README"
+      #     git push --set-upstream origin ${{ github.head_ref }}
